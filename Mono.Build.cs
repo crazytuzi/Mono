@@ -126,7 +126,15 @@ public class Mono : ModuleRules
 		}
 		else if (Target.Platform == UnrealTargetPlatform.Mac)
 		{
-			var PlatformLibraryPath = Path.Combine(LibraryPath, $"macOS_{Target.Architecture}");
+			var PlatformLibraryPath = Path.Combine(LibraryPath,
+#if UE_5_2_OR_LATER
+				Target.Architecture.bIsX64
+#else
+				Target.Architecture == "x86_64" || Target.Architecture == "x64"
+#endif
+
+					? "macOS_x86_64"
+					: "macOS_arm64");
 
 			PublicAdditionalLibraries.Add(Path.Combine(PlatformLibraryPath,
 				"libmonosgen-2.0.a"));
