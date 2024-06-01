@@ -53,7 +53,8 @@ public class Mono : ModuleRules
 				PublicSystemLibraries.Add("msvcrtd.lib");
 			}
 
-			RuntimeDependencies.Add("$(TargetOutputDir)/coreclr.dll",
+			RuntimeDependencies.Add(
+				Target.bIsEngineInstalled ? "$(BinaryOutputDir)/coreclr.dll" : "$(TargetOutputDir)/coreclr.dll",
 				Path.Combine(PlatformLibraryPath, "coreclr.dll"));
 
 			var Files = GetFiles(Path.Combine(PlatformLibraryPath, "net"));
