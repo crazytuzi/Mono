@@ -48,7 +48,8 @@ public class Mono : ModuleRules
 			PublicAdditionalLibraries.Add(Path.Combine(PlatformLibraryPath,
 				"monosgen-2.0.lib"));
 
-			RuntimeDependencies.Add("$(TargetOutputDir)/coreclr.dll",
+			RuntimeDependencies.Add(
+				Target.bIsEngineInstalled ? "$(BinaryOutputDir)/coreclr.dll" : "$(TargetOutputDir)/coreclr.dll",
 				Path.Combine(PlatformLibraryPath, "coreclr.dll"));
 
 			var Files = GetFiles(Path.Combine(PlatformLibraryPath, "net"));
