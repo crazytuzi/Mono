@@ -221,7 +221,7 @@ public class Mono : ModuleRules
 			PublicAdditionalFrameworks.Add(
 				new Framework(
 					"Mono",
-					Path.Combine(PlatformLibraryPath, "Mono.embeddendframework.zip"),
+					Path.Combine(PlatformLibraryPath, "Mono.embeddedframework.zip"),
 					null,
 					true
 				)
