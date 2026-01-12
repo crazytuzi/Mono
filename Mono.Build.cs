@@ -60,6 +60,18 @@ public class Mono : ModuleRules
 				Target.bIsEngineInstalled ? "$(BinaryOutputDir)/coreclr.dll" : "$(TargetOutputDir)/coreclr.dll",
 				Path.Combine(PlatformLibraryPath, "coreclr.dll"));
 
+			RuntimeDependencies.Add(
+				Target.bIsEngineInstalled
+					? "$(BinaryOutputDir)/System.IO.Compression.Native.dll"
+					: "$(TargetOutputDir)/System.IO.Compression.Native.dll",
+				Path.Combine(PlatformLibraryPath, "System.IO.Compression.Native.dll"));
+
+			RuntimeDependencies.Add(
+				Target.bIsEngineInstalled
+					? "$(BinaryOutputDir)/System.Globalization.Native.dll"
+					: "$(TargetOutputDir)/System.Globalization.Native.dll",
+				Path.Combine(PlatformLibraryPath, "System.Globalization.Native.dll"));
+
 			var Files = GetFiles(Path.Combine(PlatformLibraryPath, "net"));
 
 			foreach (var File in Files)
