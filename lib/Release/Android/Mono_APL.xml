@@ -20,10 +20,10 @@
 
     <soLoadLibrary>
         <log text="libmonosgen-2.0 APL adding loadLibrary references"/>
-        <loadLibrary name="libmonosgen-2.0" failmsg="libmonosgen-2.0 not loaded and required!"/>
+        <loadLibrary name="monosgen-2.0" failmsg="libmonosgen-2.0 not loaded and required!"/>
     </soLoadLibrary>
     <soLoadLibrary>
         <log text="libSystem.Native APL adding loadLibrary references"/>
-        <loadLibrary name="libSystem.Native" failmsg="libSystem.Native not loaded and required!"/>
+        <loadLibrary name="System.Native" failmsg="libSystem.Native not loaded and required!"/>
     </soLoadLibrary>
 </root>
