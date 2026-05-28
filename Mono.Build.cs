@@ -15,8 +15,11 @@ public class Mono : ModuleRules
 			"DOTNET_PATCH_VERSION=1"
 		});
 
-		var bIsDebug = Target.Configuration == UnrealTargetConfiguration.Debug ||
-		               Target.Configuration == UnrealTargetConfiguration.DebugGame;
+		var bUseRelease = true;
+
+		var bIsDebug = !bUseRelease &&
+		               (Target.Configuration == UnrealTargetConfiguration.Debug ||
+		                Target.Configuration == UnrealTargetConfiguration.DebugGame);
 
 		var MonoConfiguration = bIsDebug ? "Debug" : "Release";
 
@@ -56,20 +59,13 @@ public class Mono : ModuleRules
 				PublicSystemLibraries.Add("msvcrtd.lib");
 			}
 
-			RuntimeDependencies.Add(
-				Target.bIsEngineInstalled ? "$(BinaryOutputDir)/coreclr.dll" : "$(TargetOutputDir)/coreclr.dll",
+			RuntimeDependencies.Add("$(BinaryOutputDir)/coreclr.dll",
 				Path.Combine(PlatformLibraryPath, "coreclr.dll"));
 
-			RuntimeDependencies.Add(
-				Target.bIsEngineInstalled
-					? "$(BinaryOutputDir)/System.IO.Compression.Native.dll"
-					: "$(TargetOutputDir)/System.IO.Compression.Native.dll",
+			RuntimeDependencies.Add("$(BinaryOutputDir)/System.IO.Compression.Native.dll",
 				Path.Combine(PlatformLibraryPath, "System.IO.Compression.Native.dll"));
 
-			RuntimeDependencies.Add(
-				Target.bIsEngineInstalled
-					? "$(BinaryOutputDir)/System.Globalization.Native.dll"
-					: "$(TargetOutputDir)/System.Globalization.Native.dll",
+			RuntimeDependencies.Add("$(BinaryOutputDir)/System.Globalization.Native.dll",
 				Path.Combine(PlatformLibraryPath, "System.Globalization.Native.dll"));
 
 			var Files = GetFiles(Path.Combine(PlatformLibraryPath, "net"));
