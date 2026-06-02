@@ -17,6 +17,11 @@
         <copyFile src="$S(PluginDir)/libSystem.Native.so"
                   dst="$S(BuildDir)/libs/arm64-v8a/libSystem.Native.so"/>
     </resourceCopies>
+    <resourceCopies>
+        <log text="libSystem.Globalization.Native APL copying files for $S(Architecture)/"/>
+        <copyFile src="$S(PluginDir)/libSystem.Globalization.Native.so"
+                  dst="$S(BuildDir)/libs/arm64-v8a/libSystem.Globalization.Native.so"/>
+    </resourceCopies>
 
     <soLoadLibrary>
         <log text="libmonosgen-2.0 APL adding loadLibrary references"/>
@@ -25,5 +30,9 @@
     <soLoadLibrary>
         <log text="libSystem.Native APL adding loadLibrary references"/>
         <loadLibrary name="System.Native" failmsg="libSystem.Native not loaded and required!"/>
+    </soLoadLibrary>
+    <soLoadLibrary>
+        <log text="libSystem.Globalization.Native APL adding loadLibrary references"/>
+        <loadLibrary name="System.Globalization.Native" failmsg="libSystem.Globalization.Native not loaded and required!"/>
     </soLoadLibrary>
 </root>
